@@ -1,21 +1,24 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
     <div class="container">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">udemy_dotNETCourse</a>
-          <ul class="navbar-nav mr-auto" *ngIf="accountService.currentUser$ | async">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">matches</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">lists</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link">messages</a>
-            </li>
+        <a class="navbar-brand" routerLink='/'>udemy_dotNETCourse</a>
+
+          <ul class="navbar-nav mr-auto">
+            <ng-container *ngIf="accountService.currentUser$ |async">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" routerLink='/members' routerLinkActive='active'>matches</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink='/lists' routerLinkActive='active'>lists</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink='/messages' routerLinkActive='active'>messages</a>
+              </li>
+            </ng-container>
           </ul>
 
-          <div class="dropdown" *ngIf="accountService.currentUser$ |async" dropdown>
-            <a class="dropdown-toggle text-light" dropdownToggle>welcome user</a>
+          <div class="dropdown" *ngIf="(accountService.currentUser$ |async) as user" dropdown>
+            <a class="dropdown-toggle text-light" dropdownToggle>Welcome {{user.username | titlecase}}</a>
             <div class="dropdown-menu mt-3" *dropdownMenu>
               <a class="dropdown-item">edit profile</a>
               <div class="dropdown-divider"></div>
@@ -36,7 +39,7 @@
             class="form-control me-2" 
             type="password" 
             placeholder="Password">
-            <button class="btn btn-outline-success" type="submit">login</button>
+            <button class="btn btn-success" type="submit">login</button>
           </form>
         </div>
       </div>
