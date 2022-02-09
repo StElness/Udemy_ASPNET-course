@@ -4,7 +4,7 @@
     </div>
     <div class="col-8">
         <div class="alert alert-info" *ngIf="editForm.dirty">
-           <strong>Information:</strong>you have made changes, any unsaved changes will be lost.
+            <strong>Information:</strong>you have made changes, any unsaved changes will be lost.
         </div>
     </div>
     <div class="col-4">
@@ -29,7 +29,8 @@
                     <p>{{member.created}}</p>
                 </div>
                 <div class="card-footer">
-                    <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block">Save Changes</button>
+                    <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block">Save
+                        Changes</button>
                 </div>
             </div>
         </div>
@@ -56,9 +57,8 @@
                 </form>
             </tab>
             <tab heading='edit Photos'>
-                <p>photo edit will go here.</p>
+                <app-photo-editor [member]="member"></app-photo-editor>
             </tab>
-
         </tabset>
     </div>
 </div>
